@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flipbook</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* ❗ elimina scroll */
+      background: #000; /* opcional (negro tipo revista) */
+    }
+
+    #flipbook {
+      width: 100vw;   /* ocupa toda la pantalla */
+      height: 100vh;  /* ocupa toda la pantalla */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SOLO el flipbook -->
+  <div id="flipbook"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
+
+  <script>
+    const pages = [
+      "Boletin/Diapositiva1.JPG",
+      "Boletin/Diapositiva2.JPG",
+      "Boletin/Diapositiva3.JPG",
+      "Boletin/Diapositiva4.JPG",
+      "Boletin/Diapositiva5.JPG",
+      "Boletin/Diapositiva6.JPG",
+    ];
+
+    const flipbookElement = document.getElementById("flipbook");
+
+    let pageFlip = new St.PageFlip(flipbookElement, {
+      width: 450,
+      height: 650,
+      size: "stretch",
+      showCover: true,
+      usePortrait: true,
+      autoSize: true,
+      mobileScrollSupport: false,
+      flippingTime: 800
+    });
+
+    pageFlip.loadFromImages(pages);
+
+    // navegación con teclado (sin botones)
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") pageFlip.flipNext();
+      if (e.key === "ArrowLeft") pageFlip.flipPrev();
+    });
+  </script>
+
+</body>
+</html>
