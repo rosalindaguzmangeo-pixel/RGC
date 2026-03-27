@@ -14,23 +14,21 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden; /* ❗ elimina scroll */
-      background: #000; /* opcional (negro tipo revista) */
+      overflow: hidden;
+      background: #000;
     }
 
+    /* 👇 IMPORTANTE: limitar ancho para evitar doble página */
     #flipbook {
-      width: 100vw;   /* ocupa toda la pantalla */
-      height: 100vh;  /* ocupa toda la pantalla */
-    }
-    #flipbook {
-      max-width: 500px;
+      width: 100%;
+      max-width: 500px;   /* 👈 clave */
+      height: 100vh;
       margin: auto;
     }
   </style>
 </head>
 <body>
 
-  <!-- SOLO el flipbook -->
   <div id="flipbook"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
@@ -46,22 +44,36 @@
     ];
 
     const flipbookElement = document.getElementById("flipbook");
-   
+
     let pageFlip = new St.PageFlip(flipbookElement, {
-     width: 450,
-     height: 650,
-     size: "stretch",
-     showCover: true,
-     usePortrait: true,
-     autoSize: false,   //  importante
-     mobileScrollSupport: false,
-     flippingTime: 800,
-     maxShadowOpacity: 0.5
+      width: 450,
+      height: 650,
+      size: "fixed",          // 👈 evita adaptación a doble página
+      usePortrait: true,      // 👈 permite modo 1 página
+      autoSize: false,        // 👈 evita cambios automáticos
+      showCover: true,
+      mobileScrollSupport: false,
+      flippingTime: 800
     });
 
     pageFlip.loadFromImages(pages);
 
-    // navegación con teclado (sin botones)
+    // 🔒 FORZAR SIEMPRE UNA SOLA PÁGINA
+    pageFlip.on('init', () => {
+      pageFlip.updateState({
+        orientation: 'portrait'
+      });
+    });
+
+    pageFlip.on('changeOrientation', (e) => {
+      if (e.data === 'landscape') {
+        pageFlip.updateState({
+          orientation: 'portrait'
+        });
+      }
+    });
+
+    // navegación con teclado
     document.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight") pageFlip.flipNext();
       if (e.key === "ArrowLeft") pageFlip.flipPrev();
