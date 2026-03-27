@@ -18,12 +18,9 @@
       background: #000;
     }
 
-    /*  IMPORTANTE: limitar ancho para evitar doble página */
     #flipbook {
-      width: 100%;
-      max-width: 600px;   /*  */
+      width: 100vw;
       height: 100vh;
-      margin: auto;
     }
   </style>
 </head>
@@ -48,10 +45,10 @@
     let pageFlip = new St.PageFlip(flipbookElement, {
       width: 380,
       height: 550,
-      size: "fixed",          //  evita adaptación a doble página
+      size: "stretch",          //  evita adaptación a doble página
       usePortrait: true,      //  permite modo 1 página
-      autoSize: false,        //  evita cambios automáticos
-      showCover: true,
+      autoSize: true,        //  evita cambios automáticos
+      showCover: false,
       mobileScrollSupport: false,
       flippingTime: 800
     });
