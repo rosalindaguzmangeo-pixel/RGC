@@ -20,9 +20,9 @@
 
     /* 👇 IMPORTANTE: limitar ancho para evitar doble página */
     #flipbook {
-      width: 95%;
+      width: 100%;
       max-width: 500px;   /* 👈 clave */
-      height: 95vh;
+      height: 100vh;
       margin: auto;
     }
   </style>
@@ -64,4 +64,21 @@
         orientation: 'portrait'
       });
     });
-    
+
+    pageFlip.on('changeOrientation', (e) => {
+      if (e.data === 'landscape') {
+        pageFlip.updateState({
+          orientation: 'portrait'
+        });
+      }
+    });
+
+    // navegación con teclado
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") pageFlip.flipNext();
+      if (e.key === "ArrowLeft") pageFlip.flipPrev();
+    });
+  </script>
+
+</body>
+</html>
