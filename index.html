@@ -42,7 +42,6 @@
     ];
 
     const flipbookElement = document.getElementById("flipbook");
-
     let pageFlip = new St.PageFlip(flipbookElement, {
       width: 450,
       height: 650,
@@ -53,6 +52,7 @@
       mobileScrollSupport: false,
       flippingTime: 800
     });
+    
 
     pageFlip.loadFromImages(pages);
 
