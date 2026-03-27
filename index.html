@@ -46,17 +46,18 @@
     ];
 
     const flipbookElement = document.getElementById("flipbook");
+   
     let pageFlip = new St.PageFlip(flipbookElement, {
-      width: 450,
-      height: 650,
-      size: "stretch",
-      showCover: true,
-      usePortrait: true,
-      autoSize: true,
-      mobileScrollSupport: false,
-      flippingTime: 800
+     width: 450,
+     height: 650,
+     size: "stretch",
+     showCover: true,
+     usePortrait: true,
+     autoSize: false,   //  importante
+     mobileScrollSupport: false,
+     flippingTime: 800,
+     maxShadowOpacity: 0.5
     });
-    
 
     pageFlip.loadFromImages(pages);
 
