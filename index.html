@@ -18,10 +18,10 @@
       background: #000;
     }
 
-    /* 👇 IMPORTANTE: limitar ancho para evitar doble página */
+    /*  IMPORTANTE: limitar ancho para evitar doble página */
     #flipbook {
       width: 100%;
-      max-width: 600px;   /* 👈 clave */
+      max-width: 600px;   /*  */
       height: 100vh;
       margin: auto;
     }
@@ -48,9 +48,9 @@
     let pageFlip = new St.PageFlip(flipbookElement, {
       width: 500,
       height: 650,
-      size: "fixed",          // 👈 evita adaptación a doble página
-      usePortrait: true,      // 👈 permite modo 1 página
-      autoSize: false,        // 👈 evita cambios automáticos
+      size: "fixed",          //  evita adaptación a doble página
+      usePortrait: true,      //  permite modo 1 página
+      autoSize: false,        //  evita cambios automáticos
       showCover: true,
       mobileScrollSupport: false,
       flippingTime: 800
@@ -58,7 +58,7 @@
 
     pageFlip.loadFromImages(pages);
 
-    // 🔒 FORZAR SIEMPRE UNA SOLA PÁGINA
+    //  FORZAR SIEMPRE UNA SOLA PÁGINA
     pageFlip.on('init', () => {
       pageFlip.updateState({
         orientation: 'portrait'
