@@ -20,8 +20,8 @@
 
     /* 👇 IMPORTANTE: limitar ancho para evitar doble página */
     #flipbook {
-      width: 50%;
-      max-width: 800px;   /* 👈 clave */
+      width: 100%;
+      max-width: 600px;   /* 👈 clave */
       height: 100vh;
       margin: auto;
     }
@@ -46,7 +46,7 @@
     const flipbookElement = document.getElementById("flipbook");
 
     let pageFlip = new St.PageFlip(flipbookElement, {
-      width: 450,
+      width: 500,
       height: 650,
       size: "fixed",          // 👈 evita adaptación a doble página
       usePortrait: true,      // 👈 permite modo 1 página
