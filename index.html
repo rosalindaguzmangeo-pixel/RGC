@@ -6,7 +6,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
   />
-  <title>Flipbook fullscreen + zoom</title>
+  <title>Monitor SENASICA</title>
 
   <style>
     * {
@@ -96,6 +96,8 @@
   <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.js"></script>
 
   <script>
+
+    // CAMBIAR ESTA SECCIÓN, AGREGAR O QUITAR HOJAS ---------------------------------------------------------------------------------------------------------------
     const pages = [
       "Boletin/Diapositiva1.JPG",
       "Boletin/Diapositiva2.JPG",
@@ -104,7 +106,8 @@
       "Boletin/Diapositiva5.JPG",
       "Boletin/Diapositiva6.JPG",
     ];
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
     const flipbookElement = document.getElementById("flipbook");
     const viewer = document.getElementById("viewer");
     const zoomLayer = document.getElementById("zoom-layer");
